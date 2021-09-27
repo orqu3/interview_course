@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div class="p-3">
+    <h2>Manage Students</h2>
+    <a class="" th:href="@{/add}" title="Add New Student">Add New Student</a>
+</div>
+
+
+<div class="full-details">
+    <table class="table table-bordered table-striped table-hover table-responsive-xl text-center">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td>[[${student.id}]]</td>
+            <td>[[${student.name}]]</td>
+            <td>[[${student.age}]]</td>
+            <td>
+                <a th:href="@{'/delete/' + ${student.id}}"
+                   th:studentId="${student.id}" title="Delete this student">DELETE</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
